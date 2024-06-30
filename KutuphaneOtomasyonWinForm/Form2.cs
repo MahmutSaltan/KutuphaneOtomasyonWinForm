@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KutuphaneOtomasyonWinForm.Kullanici;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace KutuphaneOtomasyonWinForm
             InitializeComponent();
         }
 
+        KütüphaneOtomasyonuEntities db = new KütüphaneOtomasyonuEntities();
         private void IslemPaneli_Load(object sender, EventArgs e)
         {
             ekleKullanicibtn.Visible=false;
@@ -31,6 +33,7 @@ namespace KutuphaneOtomasyonWinForm
                 ekleKullanicibtn.Visible = true;
                 güncelleKullanicibtn.Visible = true;
                 silKullanicibtn.Visible = true;
+               
             }
             else
             {
@@ -39,8 +42,27 @@ namespace KutuphaneOtomasyonWinForm
                 silKullanicibtn.Visible = false;
 
             }
+           
+            
+            KullaniciListeForm kListeForm = new KullaniciListeForm();
+            kListeForm.MdiParent = this;
+            kListeForm.Show();
             
             
+        }
+
+        private void ekleKullanicibtn_Click(object sender, EventArgs e)
+        {
+            KullaniciEkleFormu ekleFormu = new KullaniciEkleFormu();
+            ekleFormu.MdiParent = this;
+            ekleFormu.Show();
+        }
+
+        private void silKullanicibtn_Click(object sender, EventArgs e)
+        {
+            KullaniciSilForm kSil = new KullaniciSilForm();
+            kSil.MdiParent = this;
+            kSil.Show();
         }
     }
 }
